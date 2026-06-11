@@ -1,0 +1,99 @@
+<section id="hero" class="hero-section">
+  <!-- Interactive Cursor Glow Background -->
+  <div class="mouse-glow"></div>
+
+  <div class="container hero-container">
+    <!-- Hero Details -->
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Available for new opportunities
+      </div>
+      
+      <h1 class="hero-title">
+        Hi, I'm <span class="highlight-text">Veeramani</span>
+      </h1>
+
+      <h2 class="hero-subtitle">
+        I am a <span class="typewriter-wrap"><span class="typewriter-text">{{ currentTitle }}</span><span class="cursor">|</span></span>
+      </h2>
+
+      <p class="hero-description">
+        I am a passionate Android and Full Stack Developer specializing in building scalable mobile applications and backend systems. I enjoy creating user-friendly digital products that solve real-world problems.
+      </p>
+
+      <div class="hero-ctas">
+        <button class="btn btn-primary" (click)="scrollToSection('projects')">
+          View My Work
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <button class="btn btn-secondary" (click)="scrollToSection('contact')">
+          Get In Touch
+        </button>
+      </div>
+    </div>
+
+    <!-- Visual Dashboard Graphics / Floating Tech Stack -->
+    <div class="hero-visual">
+      <div class="visual-wrapper">
+        <!-- Center Avatar Mockup / Tech Web -->
+        <div class="avatar-ring">
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="ring ring-3"></div>
+          
+          <div class="avatar-center">
+            <!-- Sleek Developer Monogram / Icon -->
+            <div class="monogram">VM</div>
+          </div>
+        </div>
+
+        <!-- Floating Interactive Icons -->
+        @for (icon of techIcons; track icon.name; let idx = $index) {
+          <div class="floating-icon" [ngClass]="icon.class" [style.--index]="idx">
+            <div class="icon-bubble" [style.border-color]="icon.color">
+              <!-- Inline SVG Icons -->
+              @if (icon.name === 'Android') {
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M17.523 15.3c-.551 0-1-.449-1-1 0-.552.449-1 1-1 .552 0 1 .448 1 1 0 .551-.448 1-1 1M6.477 15.3c-.551 0-1-.449-1-1 0-.552.449-1 1-1 .552 0 1 .448 1 1 0 .551-.448 1-1 1M18.1 9.8l1.7-3c.1-.2 0-.5-.2-.6-.2-.1-.5 0-.6.2l-1.8 3c-1.6-.7-3.4-1.2-5.2-1.2s-3.6.5-5.2 1.2l-1.8-3c-.1-.2-.4-.3-.6-.2-.2.1-.3.4-.2.6l1.7 3C2.8 11.5 1 13.9 1 16.7c0 .3.2.5.5.5h19c.3 0 .5-.2.5-.5 0-2.8-1.8-5.2-4.5-6.9"/>
+                </svg>
+              } @else if (icon.name === 'Kotlin') {
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M24 24H0V0h24L12 12Z"/>
+                </svg>
+              } @else if (icon.name === 'Java') {
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M9.1 19.9c.1.1.2.2.3.2.7.2 1.4.3 2.1.2 1.8-.2 3.1-1.1 3.5-2.6.4-1.4-.3-3.1-1.8-3.7-1.4-.6-2.5.2-3.1 1.2-.5.8-.4 1.8.2 2.4.4.4 1 .6 1.6.4.5-.1.9-.5 1.1-1 .2-.5-.1-1.1-.6-1.3-.3-.1-.7.1-.8.4-.1.3 0 .6.3.7.1.1.1.3 0 .4-.1.2-.4.3-.6.2-.2-.1-.3-.4-.2-.7.2-.6.7-1 1.4-.9.9.2 1.4 1 1.1 1.9-.3.9-1.2 1.4-2.2 1.2-.8-.1-1.4-.6-1.6-1.3-.2-1 .3-1.9 1-2.4 1-.7 2.3-.9 3.5-.5 1.8.7 2.7 2.5 2.1 4.3-.5 1.7-2.1 2.8-4.2 2.8-1 0-2-.3-2.8-.7-.2-.2-.3-.5-.2-.7.1-.2.4-.3.6-.2M18.8 8.1c-.2-.5-.6-1-1.1-1.3-1.2-.8-2.9-.6-3.8.4-.8.9-.7 2.3.1 3.1 1 .9 2.7.7 3.6-.3.8-.9.7-2.2-.2-2.9m-1.9 2.2c-.4.4-1.1.5-1.5.1-.4-.4-.4-1.1 0-1.5.4-.4 1.1-.4 1.5 0 .4.4.4 1.1 0 1.5m-9.1.5c.3.1.5.3.6.5.6 1.4.3 2.9-.8 3.8-1 .9-2.5.8-3.4-.2-.8-1-.7-2.5.3-3.3 1-.8 2.5-.7 3.3.2m-2.8.5c-.4.4-.3 1.1.1 1.5.4.4 1.1.3 1.5-.1.4-.4.3-1.1-.1-1.5-.4-.4-1.1-.3-1.5.1"/>
+                </svg>
+              } @else if (icon.name === 'Spring') {
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M12 .002C5.373.002 0 5.375 0 12c0 6.627 5.373 12 12 12 6.627 0 12-5.373 12-12 0-6.625-5.373-11.998-12-11.998zm5.556 16.518s-1.897 1.81-4.992 1.81c-3.13 0-5.617-2.274-5.617-5.748 0-3.69 2.87-6.002 6.388-6.002 2.525 0 4.148 1.258 4.148 1.258l-.66 1.22s-1.396-.948-3.238-.948c-2.477 0-4.636 1.528-4.636 4.336 0 2.527 1.637 4.116 4.225 4.116 2.158 0 3.606-1.127 3.606-1.127l.776 1.085z"/>
+                </svg>
+              } @else if (icon.name === 'Node.js') {
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M12 1.545l9.99 5.768v11.374L12 24.455l-9.99-5.768V7.313L12 1.545zm0 2.316L4.01 8.475v7.05L12 20.14l7.99-4.615v-7.05L12 3.861z"/>
+                </svg>
+              } @else if (icon.name === 'Angular') {
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M12 0L1.7 3.6l1.6 14.5L12 24l8.7-5.9 1.6-14.5L12 0zm0 3.3l7 12.3h-3.2l-1.3-3.3H7.5l-1.3 3.3H3l7-12.3zm0 3.8L9.2 11h5.6L12 7.1z"/>
+                </svg>
+              }
+            </div>
+            <span class="icon-label">{{ icon.name }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="scroll-down" (click)="scrollToSection('about')">
+    <span class="scroll-mouse">
+      <span class="scroll-wheel"></span>
+    </span>
+    <span class="scroll-arrow"></span>
+  </div>
+</section>

@@ -1,0 +1,137 @@
+<section id="github" class="github-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header" appScrollReveal revealClass="reveal-up">
+      <span class="sub-title">Code Activity</span>
+      <h2 class="section-title">GitHub Dashboard</h2>
+      <div class="title-underline"></div>
+    </div>
+
+    <!-- Search Input Control Bar -->
+    <div class="search-wrapper" appScrollReveal revealClass="reveal-up" [revealDelay]="100">
+      <form (submit)="$event.preventDefault(); fetchGithubData()" class="search-form glass-card">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input 
+          type="text" 
+          name="githubUsername"
+          [(ngModel)]="username" 
+          placeholder="Enter GitHub username (e.g. veeramaniamk)"
+          class="username-input"
+        />
+        <button type="submit" class="search-btn">
+          Fetch Stats
+        </button>
+      </form>
+    </div>
+
+    <!-- Loading State Spinner -->
+    @if (isLoading) {
+      <div class="loader-container">
+        <div class="spinner"></div>
+        <p>Fetching developer profile details...</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @if (!isLoading && hasError) {
+      <div class="error-container glass-card" appScrollReveal revealClass="reveal-up">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <h3>GitHub Profile Not Found</h3>
+        <p>We couldn't retrieve profile statistics for "{{ username }}". Please double-check the spelling or try again later.</p>
+      </div>
+    }
+
+    <!-- Main Dashboard Grid Layout -->
+    @if (!isLoading && !hasError && userProfile) {
+      <div class="github-grid">
+        <!-- Left Column: User Card & Language Stats -->
+        <div class="profile-column" appScrollReveal revealClass="reveal-left">
+          <!-- User Info Glass Card -->
+          <div class="user-card glass-card">
+            <div class="user-header">
+              <img [src]="userProfile.avatar_url" alt="Avatar" class="avatar" />
+              <div class="user-titles">
+                <h3>{{ userProfile.name || userProfile.login }}</h3>
+                <a [href]="userProfile.html_url" target="_blank" rel="noopener" class="user-link">&#64;{{ userProfile.login }}</a>
+              </div>
+            </div>
+            
+            <p class="user-bio">{{ userProfile.bio || 'No bio available' }}</p>
+
+            <div class="user-stats">
+              <div class="stat-box">
+                <span class="stat-num">{{ userProfile.public_repos }}</span>
+                <span class="stat-lbl">Repos</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-num">{{ userProfile.followers }}</span>
+                <span class="stat-lbl">Followers</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-num">{{ userProfile.following }}</span>
+                <span class="stat-lbl">Following</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Language Breakdown Card -->
+          <div class="languages-card glass-card">
+            <h3>Top Languages</h3>
+            @if (languages.length === 0) {
+              <p class="no-languages">No language details found in repositories.</p>
+            } @else {
+              <div class="languages-list">
+                @for (lang of languages; track lang.name) {
+                  <div class="lang-item">
+                    <div class="lang-label">
+                      <span>{{ lang.name }}</span>
+                      <span>{{ lang.percentage }}%</span>
+                    </div>
+                    <div class="lang-track">
+                      <div class="lang-bar" [style.width.%]="lang.percentage"></div>
+                    </div>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Right Column: List of Repositories -->
+        <div class="repos-column" appScrollReveal revealClass="reveal-right">
+          <h3 class="column-title">Recent Repositories</h3>
+          
+          <div class="repos-grid">
+            @for (repo of repositories; track repo.id) {
+              <a [href]="repo.html_url" target="_blank" rel="noopener" class="repo-card glass-card">
+                <div class="repo-header">
+                  <h4 class="repo-name">{{ repo.name }}</h4>
+                  <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </div>
+                
+                <p class="repo-desc">{{ repo.description || 'No description provided.' }}</p>
+                
+                <div class="repo-meta">
+                  <div class="meta-item">
+                    <span class="meta-dot" [class.kotlin]="repo.language === 'Kotlin'" [class.java]="repo.language === 'Java'" [class.js]="repo.language === 'TypeScript' || repo.language === 'JavaScript'"></span>
+                    <span class="meta-text">{{ repo.language || 'Documentation' }}</span>
+                  </div>
+                  
+                  <div class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span>{{ repo.stargazers_count }}</span>
+                  </div>
+
+                  <div class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+                    <span>{{ repo.forks_count }}</span>
+                  </div>
+                </div>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

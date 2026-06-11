@@ -1,0 +1,145 @@
+<section id="contact" class="contact-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header" appScrollReveal revealClass="reveal-up">
+      <span class="sub-title">Connect</span>
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="title-underline"></div>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Left Column: Contact Cards info -->
+      <div class="contact-info-column" appScrollReveal revealClass="reveal-left">
+        <h3 class="info-title">Let's build something awesome</h3>
+        <p class="info-text">
+          Have an interesting project, client work, or application opportunity you would like to discuss? Drop me a message! I will reply as soon as possible.
+        </p>
+
+        <div class="info-cards">
+          <!-- Email Card -->
+          <div class="info-card glass-card">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="info-details">
+              <h4>Email</h4>
+              <a href="mailto:veeramaniamk@gmail.com">veeramaniamk&#64;gmail.com</a>
+            </div>
+          </div>
+
+          <!-- Location Card -->
+          <div class="info-card glass-card">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="info-details">
+              <h4>Location</h4>
+              <p>Tamil Nadu, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form card -->
+      <div class="contact-form-column" appScrollReveal revealClass="reveal-right">
+        <div class="form-container glass-card">
+          @if (!isSuccess) {
+            <!-- Main Form -->
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+              <!-- Name & Email Rows -->
+              <div class="form-row">
+                <div class="form-group" [class.invalid]="isFieldInvalid('name')">
+                  <label for="name">Your Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    formControlName="name" 
+                    placeholder="Enter your name"
+                    class="form-input" 
+                  />
+                  @if (isFieldInvalid('name')) {
+                    <span class="error-msg">{{ getFieldError('name') }}</span>
+                  }
+                </div>
+                
+                <div class="form-group" [class.invalid]="isFieldInvalid('email')">
+                  <label for="email">Email Address</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    formControlName="email" 
+                    placeholder="Enter your email"
+                    class="form-input" 
+                  />
+                  @if (isFieldInvalid('email')) {
+                    <span class="error-msg">{{ getFieldError('email') }}</span>
+                  }
+                </div>
+              </div>
+
+              <!-- Subject Input -->
+              <div class="form-group" [class.invalid]="isFieldInvalid('subject')">
+                <label for="subject">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  formControlName="subject" 
+                  placeholder="What is this about?"
+                  class="form-input" 
+                />
+                @if (isFieldInvalid('subject')) {
+                  <span class="error-msg">{{ getFieldError('subject') }}</span>
+                }
+              </div>
+
+              <!-- Message Textarea -->
+              <div class="form-group" [class.invalid]="isFieldInvalid('message')">
+                <label for="message">Message</label>
+                <textarea 
+                  id="message" 
+                  formControlName="message" 
+                  rows="5" 
+                  placeholder="Write your message here..."
+                  class="form-textarea"
+                ></textarea>
+                @if (isFieldInvalid('message')) {
+                  <span class="error-msg">{{ getFieldError('message') }}</span>
+                }
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" [disabled]="isSubmitting" class="btn btn-primary submit-btn">
+                @if (isSubmitting) {
+                  <span class="btn-spinner"></span>
+                  Sending...
+                } @else {
+                  Send Message
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                }
+              </button>
+            </form>
+          } @else {
+            <!-- Success Screen -->
+            <div class="success-screen">
+              <div class="success-icon-wrapper">
+                <div class="success-circle">
+                  <svg class="check-tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="check-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="check-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <h3>Thank you, {{ submittedName }}!</h3>
+              <p>Your message has been sent successfully. I will reach back out to you shortly.</p>
+              
+              <button class="btn btn-secondary reset-btn" (click)="resetFormState()">
+                Send Another Message
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

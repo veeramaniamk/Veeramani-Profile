@@ -1,0 +1,240 @@
+.about-section {
+  position: relative;
+  padding: 100px 0;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sub-title {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+
+  @media (max-width: 576px) {
+    font-size: 2.2rem;
+  }
+}
+
+.title-underline {
+  width: 60px;
+  height: 4px;
+  background: var(--grad-primary);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 4rem;
+  align-items: flex-start;
+  margin-bottom: 5rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.about-visual {
+  position: relative;
+}
+
+.profile-card {
+  position: relative;
+  padding: 2.5rem;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+
+  .glow-overlay {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  .profile-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--grad-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+
+    .avatar-text {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+}
+
+.card-body {
+  .bio-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+
+    svg {
+      color: #8b5cf6;
+    }
+  }
+
+  .bio-text {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.intro-text {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.points-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.point-card {
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-radius: var(--border-radius-md);
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  .point-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .point-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+}
+
+/* Counters Row styles */
+.counters-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.counter-card {
+  padding: 2rem;
+  text-align: center;
+  border-radius: var(--border-radius-md);
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .counter-number {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+
+    span {
+      font-family: var(--font-heading);
+    }
+  }
+
+  .counter-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}

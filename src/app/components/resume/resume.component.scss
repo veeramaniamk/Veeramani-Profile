@@ -1,0 +1,223 @@
+.resume-section {
+  position: relative;
+  padding: 100px 0;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.resume-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 5rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.resume-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title-underline-left {
+  width: 60px;
+  height: 4px;
+  background: var(--grad-primary);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+.resume-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.qualifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.qualification-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+
+  .qual-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+}
+
+.download-btn {
+  margin-top: 1rem;
+}
+
+/* 3D Mockup card styles */
+.resume-visual {
+  display: flex;
+  justify-content: center;
+  perspective: 1200px; /* Crucial for 3D rotation */
+}
+
+.resume-mockup-card {
+  position: relative;
+  width: 300px;
+  height: 420px;
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform: rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+  transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 20px 45px rgba(139, 92, 246, 0.25);
+  }
+
+  .mockup-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.05),
+      transparent 80%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+/* Mockup paper document layout details */
+.mockup-document {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transform: translateZ(30px); /* Pushes elements out in 3D space */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.doc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .doc-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--grad-primary);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .doc-name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .doc-tag {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+}
+
+.doc-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.doc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.doc-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.doc-sec-title {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8b5cf6;
+}
+
+.doc-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+
+  span {
+    font-size: 0.55rem;
+    font-weight: 600;
+    padding: 0.15rem 0.4rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+  }
+}
+
+.doc-line {
+  height: 6px;
+  background: var(--border-color);
+  border-radius: 3px;
+  width: 100%;
+
+  &.short {
+    width: 60%;
+  }
+}

@@ -1,1 +1,255 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global CSS Custom Properties for Theme System */
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.2s ease;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --max-width: 1200px;
+}
+
+/* Dark Theme Variables (Default) */
+[data-theme="dark"] {
+  --bg-primary: #0a0b10;
+  --bg-secondary: #12131c;
+  --bg-tertiary: #191b29;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(127, 0, 255, 0.2);
+  --glass-bg: rgba(18, 19, 28, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
+  --glow-color: rgba(139, 92, 246, 0.15);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #d946ef 100%);
+  --grad-secondary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  --grad-orange: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+  --grad-text: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  --grad-accent: linear-gradient(90deg, #3b82f6, #8b5cf6, #d946ef, #3b82f6);
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #eef2f6;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-glow: rgba(59, 130, 246, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-shadow: rgba(15, 23, 42, 0.08);
+  --glow-color: rgba(59, 130, 246, 0.05);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #c084fc 100%);
+  --grad-secondary: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
+  --grad-orange: linear-gradient(135deg, #ea580c 0%, #db2777 100%);
+  --grad-text: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  --grad-accent: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #2563eb);
+}
+
+/* Basic Resets & Document Setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button, input, textarea {
+  font-family: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+  border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Dynamic Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--grad-primary);
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+}
+
+/* Glassmorphism utility card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(139, 92, 246, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Custom Gradients Text */
+.gradient-text {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-orange {
+  background: var(--grad-orange);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-cyan {
+  background: var(--grad-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+/* Animation System (Scroll-triggered via Directive) */
+.reveal {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-fade {
+  transform: scale(0.95);
+}
+
+.reveal-up {
+  transform: translateY(40px);
+}
+
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger animations helper */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@for $i from 1 through 10 {
+  .reveal-stagger.visible > *:nth-child(#{$i}) {
+    transition-delay: #{$i * 0.1}s;
+  }
+}
+
+/* Pulsing animated blob glow */
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.15;
+  animation: float-blob 12s infinite alternate ease-in-out;
+}
+
+@keyframes float-blob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -50px) scale(1.2);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(0.8);
+  }
+}

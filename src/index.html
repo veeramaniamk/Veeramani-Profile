@@ -2,12 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>VeeramaniProfile</title>
+  <title>Veeramani | Mobile Application & Full Stack Developer</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal portfolio of Veeramani - Passionate Android & Full Stack Developer specializing in Kotlin, Java, Spring Boot, Node.js, and modern application architecture.">
+  <meta name="keywords" content="Veeramani, Android Developer, Full Stack Developer, Kotlin, Spring Boot, Node.js, Portfolio, Tamil Nadu, India">
+  <meta name="author" content="Veeramani">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Google Fonts: Outfit for Headings, Inter for Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    // Inline script to apply theme immediately before app loads to avoid theme flicker
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </head>
 <body>
   <app-root></app-root>
 </body>
 </html>
+

@@ -1,0 +1,87 @@
+<section id="resume" class="resume-section">
+  <div class="container resume-container">
+    <!-- Left Column: Details -->
+    <div class="resume-text" appScrollReveal revealClass="reveal-left">
+      <span class="sub-title">Qualifications</span>
+      <h2 class="section-title">Resume & Credentials</h2>
+      <div class="title-underline-left"></div>
+      
+      <p class="resume-description">
+        Interested in my comprehensive work history and academic background? My complete resume details my experience as an Android and Full Stack Developer, highlighting projects in healthcare, commerce, and government sectors.
+      </p>
+
+      <div class="qualifications-list">
+        <div class="qualification-item">
+          <svg class="qual-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+          <div>
+            <h4>Educational Foundation</h4>
+            <p>Solid conceptual knowledge of data structures, algorithms, and database design.</p>
+          </div>
+        </div>
+
+        <div class="qualification-item">
+          <svg class="qual-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <div>
+            <h4>Practical Industry Experience</h4>
+            <p>Developing native mobile applications and Spring Boot backend endpoints.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="btn btn-primary download-btn" (click)="$event.preventDefault()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download Resume
+      </a>
+    </div>
+
+    <!-- Right Column: 3D Mockup Card -->
+    <div class="resume-visual" appScrollReveal revealClass="reveal-right">
+      <div 
+        #tiltCard 
+        class="resume-mockup-card glass-card"
+        (mousemove)="onMouseMove($event)"
+        (mouseleave)="onMouseLeave()">
+        
+        <div class="mockup-glow"></div>
+        
+        <!-- Inside Mockup Document Layout -->
+        <div class="mockup-document">
+          <div class="doc-header">
+            <div class="doc-avatar-placeholder">VM</div>
+            <div class="doc-titles">
+              <div class="doc-name">Veeramani</div>
+              <div class="doc-tag">Mobile & Full Stack Developer</div>
+            </div>
+          </div>
+          
+          <div class="doc-divider"></div>
+          
+          <div class="doc-body">
+            <div class="doc-sec">
+              <div class="doc-sec-title">Core Competencies</div>
+              <div class="doc-badges">
+                <span>Android / Kotlin</span>
+                <span>Spring Boot</span>
+                <span>Node.js</span>
+                <span>MySQL</span>
+              </div>
+            </div>
+            
+            <div class="doc-sec">
+              <div class="doc-sec-title">Key Projects</div>
+              <div class="doc-line"></div>
+              <div class="doc-line short"></div>
+              <div class="doc-line"></div>
+            </div>
+
+            <div class="doc-sec">
+              <div class="doc-sec-title">Experience</div>
+              <div class="doc-line"></div>
+              <div class="doc-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

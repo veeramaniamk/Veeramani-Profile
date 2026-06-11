@@ -1,0 +1,371 @@
+.github-section {
+  position: relative;
+  padding: 100px 0;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 50px;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    border-radius: var(--border-radius-md);
+    padding: 1rem;
+  }
+}
+
+.search-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
+}
+
+.username-input {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: transparent;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+.search-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--grad-primary);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  transition: var(--transition-fast);
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  }
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+}
+
+/* Spinner loader styles */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  gap: 1.5rem;
+
+  p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-color);
+  border-top-color: #8b5cf6;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Error Container */
+.error-container {
+  padding: 3rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+}
+
+/* Main Grid Layout */
+.github-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.user-card {
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  .avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid #8b5cf6;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+  }
+
+  .user-titles {
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+  }
+
+  .user-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #8b5cf6;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.user-bio {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.user-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-num {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .stat-lbl {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+}
+
+/* Language breakdown */
+.languages-card {
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.languages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.lang-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lang-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.lang-track {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.lang-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--grad-primary);
+}
+
+/* Repos grid */
+.repos-column {
+  .column-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 992px) {
+      text-align: center;
+    }
+  }
+}
+
+.repos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.repo-card {
+  padding: 1.75rem;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  height: 200px; /* Uniform height */
+
+  &:hover {
+    transform: translateY(-5px);
+    
+    .external-icon {
+      transform: translate(2px, -2px);
+      color: #8b5cf6;
+    }
+  }
+}
+
+.repo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+
+  .repo-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .external-icon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: var(--transition-fast);
+  }
+}
+
+.repo-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  flex-shrink: 0;
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    svg {
+      color: var(--text-muted);
+    }
+  }
+
+  .meta-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #6b7280;
+
+    &.kotlin { background: #7F52FF; }
+    &.java { background: #b07219; }
+    &.js { background: #f1e05a; }
+  }
+}
